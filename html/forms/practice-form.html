@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Pizza Here</title>
+</head>
+	<body>
+		<form action="success.html" method="post">
+			<h1>Order Pizza Here</h1>
+				<div>
+					<input type="text" name="name" placeholder="John">Name <br>
+					<input type="text" name="phone" placeholder="555-555-5555">Telephone Number <br>
+					<input type="email" name="email" placeholder="abc@google.com">Email <br>
+				</div>
+
+				<div>
+					<input type="radio" name="size" value="large">Large<br>
+					<input type="radio" name="size" value="medium">Medium<br>
+					<input type="radio" name="size" value="small">Small<br>
+				</div>
+				
+				<div>Crust:
+					<select name="toppings">
+						<option value="pepperoni">Stuffed</option>
+						<option value="sausage">Thin-crust</option>
+						<option value="green_pepper">Deep-dish</option>
+					</select>
+					<br>
+				</div>
+
+				<div>Special Instructions:<br>
+					<textarea rows="5" cols="50"></textarea>
+				</div>
+
+				<button type="submit">Place your order</button>
+			</form>
+	</body>
+</html>
