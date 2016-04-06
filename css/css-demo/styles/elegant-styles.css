@@ -62,5 +62,5 @@ an element of a certain class (the p
 is nested inside the contact-info section) */
 
 #contact-info p {
-  line-height: .8;
+  line-height: 0.2;
 }
