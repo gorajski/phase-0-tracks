@@ -1,0 +1,32 @@
+
+section#contact-info {
+  font-size: 0.8em;
+  
+}
+section.job{
+	background-color: #e9e5dc ;
+	padding:2px 10px;
+  border-radius: 8px;
+  margin: 10px ;
+}
+ul.List-Mod{
+	font-size: 0.8em;
+}
+/*This is an example of a structural  pseudo class called ":only-of-type ". It makes the background of the first header gray.*/
+h1:only-of-type{
+   background-color: gray;
+ }
+ /*Selecting the child element of another element.I used the structural pseudo-class to change the color of the last element in the list to red*/
+  ul > li:last-child{
+   color: red;
+ }
+
+
+
+
+
+/*"Cascading" in this context means that because more than one stylesheet rule could apply to a particular piece of HTML, there has to be a known way of determining which specific stylesheet rule applies to which piece of HTML.
+The rule used is chosen by cascading down from the more general rules to the specific rule required. The most specific rule is chosen.
+*/
+/*(cheat sheet)https://www.kobzarev.com/wp-content/uploads/cheatsheets/css/css3-cheat-sheet.pdf*/
+/* I found this website with examples and syntax about different pseudo classes and css selectors and I think it is very helpful.  https://www.w3.org/wiki/CSS/Selectors/pseudo-classes/:last-child */

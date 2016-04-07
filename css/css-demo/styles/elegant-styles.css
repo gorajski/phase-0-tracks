@@ -8,6 +8,7 @@ body {
   font-family: "Georgia", serif;
   padding: 20px 30px;
   border-radius: 5px;
+  color: blue;
   background-color: white;
   margin: 30px auto;
   max-width: 960px;
@@ -62,5 +63,5 @@ an element of a certain class (the p
 is nested inside the contact-info section) */
 
 #contact-info p {
-  line-height: 0.2;
+  line-height: 0.8;
 }
