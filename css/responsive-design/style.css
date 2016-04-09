@@ -1,5 +1,5 @@
 body {
-  width: 960px;
+  max-width: 960px;
 }
 
 
@@ -15,7 +15,10 @@ cite {
 }
 
 section#external-links {
-  width: 200px;
+/*  max-width: 200px; */
+  padding: 10px;
+  min-width: 177px;
+  width: 18%;
   display: inline-block;
   vertical-align: top;
 }
@@ -43,7 +46,8 @@ figcaption {
 }
 
 main {
-  width: 756px;
+/*  max-width: 756px; */
+  width: 78%;
   display: inline-block;
   vertical-align: top;
 }
