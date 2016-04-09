@@ -1,11 +1,21 @@
+body{
+	border: 5px solid green;
+}
+
 div.octopus {
-	position: fixed;
+	height: 400px;
+	width: 210px;
+	margin: 200px auto 0px auto;
 }
 
 div.hat {
-	position: fixed;
+/*	height: 167px;
+	width: 275px; */
+	position: relative;
 }
 
 div.glasses {
-	position: fixed;
+/*	height: 58px;
+	width: 135px; */
+	position: relative;
 }
