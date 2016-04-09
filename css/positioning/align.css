@@ -1,0 +1,19 @@
+div.octopus {
+
+	width: 210px;
+	margin: 200px auto 0px auto;
+}
+
+div.hat {
+/*	height: 167px; */
+	width: 265px; 
+	margin: -350px auto 0px auto;
+	position: relative;
+}
+
+div.glasses {
+/*	height: 58px; */
+	width: 130px; 
+	margin: -15px auto 0px auto;
+	position: relative;
+}
