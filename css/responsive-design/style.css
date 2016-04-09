@@ -46,8 +46,21 @@ figcaption {
 }
 
 main {
-/*  max-width: 756px; */
   width: 78%;
   display: inline-block;
   vertical-align: top;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  blockquote {
+    font-size: 0.8em;
+    padding: 5px;
+    width: 100px;
+  }
 }
