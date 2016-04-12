@@ -1,0 +1,52 @@
+TO OPERATE AN ELEVATOR:
+
+-	Enter the elevator.
+-	Turn around.
+-	Look left.
+	-	If there is a key panel on the left, jump to Line #11
+	-	If there is not a key panel on the left, go to next step.
+-	Look right.
+	-	If there is a key panel on the right, jump to Line #11
+	-	If there is not a key panel on the right, jump to Line #5.
+-	Move to the key panel.
+-	Ask me what floor we are going to.  Store the number I say.
+-	Look at the upper left-most button.
+-	If the button you are looking at matches the number stored, jump to Line #21.
+-	If there is a button to the right: 
+	-	Look at this button.
+	-	Jump to Line #14.
+-	If there is not a button to the right:
+	-	Look down one row at its left-most button.
+	-	Jump to Line #14.
+-	Push the button.
+-	Back up so other passengers can make their selections.
+-	While the button remains lit:
+	-	DON'T MAKE EYE CONTACT WITH ANYONE!!!  CONTINUE FACING FORWARD!!!
+	-	Wait for the button's light to go out.
+-	Turn and face the doors.
+-	Wait for the doors to open.
+-	Move quickly towards and through the doors.
+
+
+TO MAKE COFFEE:
+
+-	Retrieve the coffee pot from the coffee maker.
+-	Go to the sink.
+-	Ask me how many cups of coffee to make.  Store this number.
+-	Fill up the coffee pot with the same number of cups of water as the number of cups of coffee I requested.
+	- If the water is not working, please notify me.
+	- If the water has a color to it, please notify me.
+-	Return to the coffee maker.
+-	With your free hand, open the coffee maker top.
+-	Pour the water from the coffee pot into the coffee maker reservoir.
+-	Place the coffee pot on the coffee maker's heating plate.
+-	Retrieve a coffee filter from the cabinet.
+	- If there are no coffee filters, please notify me.
+-	Place the coffee filter in the coffee maker's filter basket.
+-	Retrieve the coffee grounds from the cabinet.
+	-	If I requested two cups of coffee, add one scoop of coffee grounds to the coffee filter.
+	-	If I requested three cups of coffee, add one and a half scoops of coffee grounds to the coffee filter.
+	-	If I requested four cups of coffee, add two scoops of coffee grounds to the coffee filter.
+-	Close the top of the coffee maker.
+-	Turn the coffee maker's switch the ON position.
+-	Play "The Coffee Song" as sung by Frank Sinatra while the coffee brews.
