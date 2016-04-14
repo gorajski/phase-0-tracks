@@ -1,8 +1,6 @@
 #-------------Initialize Variables---------------#
 i = 0
-j = 0
 result = ""
-allergy_list = ""
 
 #-----------Request Processing Loops-------------#
 puts "Enter the number of employees you would like process:"
@@ -61,8 +59,6 @@ while i < emp_num do
 	puts "Please enter any allergies you may have, one at a time, followed by ENTER.  When finished, please type done followed by ENTER."
 	until result.upcase == "DONE" || result.upcase == "SUNSHINE"
 		result = gets.chomp
-		allergy_list[j] = result
-		j += 1
 	end
 
 	#--------------Evaluate Results---------------#
@@ -81,7 +77,11 @@ while i < emp_num do
 			puts "Results Inconclusive."
 		end
 	end
+	puts ""		#blank space between different iterations.
+	result = ""	#clears contents of result variable for next iteration.
 
-	puts ""		#blank space between different iterations
-end	
+	#----------------Final Message-----------------#
+end
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
+
 		
