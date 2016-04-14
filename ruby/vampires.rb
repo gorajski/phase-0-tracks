@@ -1,5 +1,8 @@
 #-------------Initialize Variables---------------#
 i = 0
+j = 0
+result = ""
+allergy_list = ""
 
 #-----------Request Processing Loops-------------#
 puts "Enter the number of employees you would like process:"
@@ -54,18 +57,31 @@ while i < emp_num do
 		wants_insur = false
 	end
 
-	#--------------Evaluate Results---------------#
-	if young_enough && (wants_order || wants_insur)
-		puts "Probably not a vampire."
-	elsif (!young_enough && (!wants_order || !wants_insur)) && !(!young_enough && !wants_order && !wants_insur)
-		puts "Probably a vampire."
-	elsif !young_enough && !wants_order && !wants_insur
-		puts "Almost certainly a vampire."
-	elsif app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG"
-		puts "Definitely a vampire."
-	else
-		puts "Results Inconclusive."
+	#-------------Check For Allergies-------------#
+	puts "Please enter any allergies you may have, one at a time, followed by ENTER.  When finished, please type done followed by ENTER."
+	until result.upcase == "DONE" || result.upcase == "SUNSHINE"
+		result = gets.chomp
+		allergy_list[j] = result
+		j += 1
 	end
+
+	#--------------Evaluate Results---------------#
+	if result.upcase == "SUNSHINE"
+		puts "Probably a vampire."
+	else
+		if young_enough && (wants_order || wants_insur)
+			puts "Probably not a vampire."
+		elsif (!young_enough && (!wants_order || !wants_insur)) && !(!young_enough && !wants_order && !wants_insur)
+			puts "Probably a vampire."
+		elsif !young_enough && !wants_order && !wants_insur
+			puts "Almost certainly a vampire."
+		elsif app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG"
+			puts "Definitely a vampire."
+		else
+			puts "Results Inconclusive."
+		end
+	end
+
 	puts ""		#blank space between different iterations
 end	
 		
