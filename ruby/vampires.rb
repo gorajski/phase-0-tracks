@@ -14,8 +14,6 @@ while i < emp_num do
 	puts "What is your name?"
 	app_name = gets.chomp.to_s
 
-
-
 	#----------------Collect Age------_----------#
 	puts "How old are you?"
 	app_age = gets.chomp.to_i
@@ -25,7 +23,6 @@ while i < emp_num do
 	else
 		young_enough = false
 	end
-
 
 	#-----------Collect Cafeteria Order-----------#
 	puts "Our company cafeteria serves garlic bread.  Should we order some for you?"
@@ -65,11 +62,11 @@ while i < emp_num do
 	if result.upcase == "SUNSHINE"
 		puts "Probably a vampire."
 	else
-		if young_enough && (wants_order || wants_insur)
+		if young_enough && (wants_order || wants_insur) && !(app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
 			puts "Probably not a vampire."
-		elsif (!young_enough && (!wants_order || !wants_insur)) && !(!young_enough && !wants_order && !wants_insur)
+		elsif (!young_enough && (!wants_order || !wants_insur)) && !(!young_enough && !wants_order && !wants_insur) && !(app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
 			puts "Probably a vampire."
-		elsif !young_enough && !wants_order && !wants_insur
+		elsif !young_enough && !wants_order && !wants_insur && !(app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
 			puts "Almost certainly a vampire."
 		elsif app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG"
 			puts "Definitely a vampire."
