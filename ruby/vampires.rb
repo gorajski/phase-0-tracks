@@ -1,6 +1,10 @@
+#-----------------Declarations-------------------#
+require 'date'
+
 #-------------Initialize Variables---------------#
 i = 0
 result = ""
+output = ""
 
 #-----------Request Processing Loops-------------#
 puts "Enter the number of employees you would like process:"
@@ -18,10 +22,14 @@ while i < emp_num do
 	puts "How old are you?"
 	app_age = gets.chomp.to_i
 
-	if app_age < 108
-		young_enough = true
+	puts "What year were you born?"
+	app_yob = gets.chomp.to_i
+
+	yob_age = (Date.today.year - app_yob)
+	if yob_age == app_age || yob_age == (app_age + 1)
+		age_matches = true
 	else
-		young_enough = false
+		age_matches = false
 	end
 
 	#-----------Collect Cafeteria Order-----------#
@@ -59,26 +67,20 @@ while i < emp_num do
 	end
 
 	#--------------Evaluate Results---------------#
-	if result.upcase == "SUNSHINE"
-		puts "Probably a vampire."
-	else
-		if young_enough && (wants_order || wants_insur) && !(app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
-			puts "Probably not a vampire."
-		elsif (!young_enough && (!wants_order || !wants_insur)) && !(!young_enough && !wants_order && !wants_insur) && !(app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
-			puts "Probably a vampire."
-		elsif !young_enough && !wants_order && !wants_insur && !(app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
-			puts "Almost certainly a vampire."
-		elsif app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG"
-			puts "Definitely a vampire."
-		else
-			puts "Results Inconclusive."
-		end
-	end
-	puts ""		#blank space between different iterations.
+if result.upcase == "SUNSHINE"
+	output = "Probably a vampire."
+else
+	output = "Probably not a vampire." if (age_matches && (wants_order || wants_insur))
+	output = "Probably a vampire." unless (age_matches || (wants_order && wants_insur)) #Logically equivalent to "output = "Probably a vampire." if (!age_matches && (!wants_order || !wants_insur))"
+	output = "Almost certainly a vampire." unless (age_matches || wants_order || wants_insur) #Logically equivalent to "output = "Almost certainly a vampire." if (!age_matches && !wants_order && !wants_insur)"
+	output = "Definitely a vampire." if (app_name.upcase == "DRAKE CULA" || app_name.upcase == "TU FANG")
+	output = "Results Inconclusive." if output.empty?
+end
+	puts output
+
+	puts "\n"	#blank space between different iterations.
 	result = ""	#clears contents of result variable for next iteration.
 
 	#----------------Final Message-----------------#
 end
-puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
-
-		
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."		
