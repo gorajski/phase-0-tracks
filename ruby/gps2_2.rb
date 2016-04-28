@@ -37,8 +37,8 @@ end
 
 # # add item w/ quantity
 
-def addto_list(grocery_list, newitem)
-  grocery_list[newitem] = 0
+def addto_list(grocery_list, newitem, quantity)
+  grocery_list[newitem] = quantity
   grocery_list
 end
 
@@ -51,8 +51,11 @@ end
 
 # # update quantities for items
 
-def addquant(grocery_list, item, quantity)
-  grocery_list[item] = quantity
+def modquant(grocery_list, item, quantity)
+  # if item already exists in grocery_list, then carry out the following instructions, otherwise quit
+  if grocery_list.include?(item)
+     grocery_list[item] = quantity
+  end
   grocery_list
 end
 
@@ -63,8 +66,11 @@ def printlist(grocery_list)
 end
 
 
-glist = make_list("milk bananas yogurt bread juice")
-addto_list(glist, "soup")
-remove_item(glist, "juice")
-addquant(glist, "milk" , 3)
+glist = make_list("fruit waffles coffee")
+addto_list(glist, "lemonade", 2)
+addto_list(glist, "tomatoes", 3)
+addto_list(glist, "onions", 1)
+addto_list(glist, "ice cream", 4)
+remove_item(glist, "lemonade")
+modquant(glist, "ice cream" , 1)
 printlist(glist)
