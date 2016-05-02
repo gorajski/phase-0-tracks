@@ -1,20 +1,10 @@
 # CLASS Car
 # ATTRIBUTES location (integer), light status (off, lights, brights), and sunroof (open closed)
-# METHODS initialize, forward, toggle_lights, toggle_roof, display_car
+# METHODS initialize, toggle_lights, toggle_roof, display_car
 # 
 # initiallize Method
 # Sets up a new car with location = 0, lights off and sunroof closed
 # Initializes "display strings"
-# 
-# forward Method
-# Accepts a parameter for car location
-# Ensure parameter is not out of range 
-# Add spacer string to front end of each "display string"
-# 
-# reverse Method
-# Accepts a parameter for car location
-# Ensure parameter is not out of range 
-# truncate front end of each "display string" based parameter
 # 
 # toggle_lights Method
 # if lights off 
@@ -40,132 +30,67 @@
 #
 
 class Car
-	attr_accessor :location, :light_status, :roof_status
+	attr_accessor :location, :key_status
+	attr_reader :fuel
 
 	def initialize
-		@location = 0
-		@light_status = 0
-		@roof_status = false
-		@limit = 25
-		@line1 = "      _________"
-		@line2 = "    //   |||   \\\     "
-		@line3 = " __//____|||____\\\____  "
-		@line4 = "| _|      |       _  ||"
-		@line5 = "|/ \\______|______/ \\_||"
-		@line6 = " \\_/             \\_/"
+		@location = 1
+		@key_status = true
+		@fuel = 0.0
 	end
 
-	def forward(delta)
-		if @location + delta >= @limit		#Detect and handle edge condition
-			delta = @limit - @location
-			@location = @limit				#Update location
-			puts "WARNING - This is as far as the car can go:"
+	def is_tank_full?
+		@fuel <= 0.9
+	end
+
+	def add_fuel(percent)
+		@fuel += percent
+	end
+
+	def display_car		
+		puts "The car in parking space #{@location[0]} has:"
+		puts "A #{fuel} full tank of gas."
+		if key_status
+			puts "Has keys in the car."
 		else
-			@location += delta 				#Update location
+			puts "Does not have keys in the car."
 		end
-			delta_str = " " * delta
-			@line1 = delta_str + @line1		#prepend blank string to display strings to move car forward
-			@line2 = delta_str + @line2
-			@line3 = delta_str + @line3
-			@line4 = delta_str + @line4
-			@line5 = delta_str + @line5
-			@line6 = delta_str + @line6
-
-	end
-
-	def reverse(delta)
-		if @location - delta < 0 			#Detect and handle edge condition
-			delta = @location
-			@location = 0					#Update location
-			puts "WARNING - This is as far as the car can go:"
-		else
-			@location = @location - delta 	#Update location
-		end
-		@line1 = @line1[delta..@line1.length]	#erase blank string to display strings to move car back
-		@line2 = @line2[delta..@line2.length]
-		@line3 = @line3[delta..@line3.length]
-		@line4 = @line4[delta..@line4.length]
-		@line5 = @line5[delta..@line5.length]
-		@line6 = @line6[delta..@line6.length]
-	end
-
-	def toggle_lights
-		if @light_status == 0		# If lights off
-			@light_status += 1
-			@line4 = (" " * @location) + "| _|      |       _  ||==========================="	# turn lights on
-		elsif @light_status == 1	# If lights on
-			@light_status += 1
-			@line3 = (" " * @location) + " __//____|||____\\\____  ---------------------------"	# turn headbeams on
-			@line5 = (" " * @location) + "|/ \\______|______/ \\_||---------------------------"
-		else
-			@light_status = 0		#if headbeams on
-			@line3 = (" " * @location) + " __//____|||____\\\____  "	#turn lights off
-			@line4 = (" " * @location) + "| _|      |       _  ||"
-			@line5 = (" " * @location) + "|/ \\______|______/ \\_||"
-		end
-	end
-
-	def toggle_roof
-		unless @roof_status			#If roof is closed
-			@line1 = (" " * @location) + "      ___     _"	#open it
-		else
-			@line1 = (" " * @location) + "      _________"	#otherwise close it"
-		end
-		@roof_status = !@roof_status	#toggle flag
-	end
-
-	def display_car			#output current car visualization
-		puts @line1
-		puts @line2
-		puts @line3
-		puts @line4
-		puts @line5
-		puts @line6
 	end
 
 end
 
 #  - - User Interface - -  #
 def main
-	puts "INSTRUCTIONS:  Use the following commands to operate the car:"
-	puts "f: Move the car forward."
-	puts "r: Move the car in reverse."
-	puts "l: Toggle the lights."
-	puts "s: Open and close the sunroof."
-	puts "x: To exit."
 
-	sedan = Car.new
+#  - - Initialize Variables  - - #
+	i = 0
+	car_lot = []
 
 	until false
+		puts "Would you like to add a car to the Infinite Parking Lot? y/n"
 		input = gets.chomp
-		case input 
-		when "f"
-			puts "How many feet forward should we move?"
-			feet = gets.chomp.to_i
-			sedan.forward(feet)
-			sedan.display_car
-		when "r"
-			puts "How many feet forward should we move?"
-			feet = gets.chomp.to_i
-			sedan.reverse(feet)
-			sedan.display_car			
-		when "l"
-			sedan.toggle_lights
-			sedan.display_car			
-		when "s"
-			sedan.toggle_roof
-			sedan.display_car	
-			if sedan.roof_status
-				puts "Roof open."
-			else
-				puts "Roof closed."
-			end
-		when "x"
-			break
+		break if input == "n"
+		car_lot[i] = Car.new
+		puts "Please enter the row the car will be parked in:"
+		car_lot[i].location = gets.chomp.to_i
+		puts "Are the keys in the car? y/n"
+		car_lot[i].key_status = (gets.chomp == "y")
+		puts "How much fuel by % is in the car?"
+		car_lot[i].add_fuel((gets.chomp.to_f / 100))
+		puts "Would you like to add fuel? y/n"
+		if (gets.chomp == "y")
+			puts "Please enter the percentage of fuel added:"
+			car_lot[i].add_fuel((gets.chomp.to_f / 100))
 		end
+
+		i += 1
 	end
+
+	car_lot.each { |this_car| this_car.display_car }
+
 end
 
+#  - - Execute Code - -  #
 main
 
 # - - Old Driver Code - -  #
