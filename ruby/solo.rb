@@ -88,6 +88,31 @@ class Car
 		@line6 = @line6[delta..@line6.length]
 	end
 
+	def toggle_lights
+		if @light_status == 0
+			@light_status += 1
+			@line4 = (" " * @location) + "| _|      |       _  ||==========================="
+		elsif @light_status == 1
+			@light_status += 1
+			@line3 = (" " * @location) + " __//____|||____\\\____  ---------------------------"
+			@line5 = (" " * @location) + "|/ \\______|______/ \\_||---------------------------"
+		else
+			@light_status = 0
+			@line3 = (" " * @location) + " __//____|||____\\\____  "
+			@line4 = (" " * @location) + "| _|      |       _  ||"
+			@line5 = (" " * @location) + "|/ \\______|______/ \\_||"
+		end
+	end
+
+	def toggle_roof
+		unless @roof_status
+			@line1 = (" " * @location) + "      ___     _"
+		else
+			@line1 = (" " * @location) + "      _________"
+		end
+		@roof_status = !@roof_status
+	end
+
 	def display_car
 		puts @line1
 		puts @line2
@@ -97,69 +122,31 @@ class Car
 		puts @line6
 	end
 
-	def toggle_lights
-# if lights off 
-#   make lights on
-#   swap appropriate display string
-	# if @light_status == 0
-	# 	@light_status += 1
-	# 	@line4 = (" " * @location) + "| _|      |       _  ||==============================="
-	end
-
-# if light on then make brights on
-#   make brights on
-#   swap appropriate display strings
-# if brights on then make lights off
-#   make lights off
-#   swap appropriate display strings
-	# end
-
-	def toggle_roof
-	end
-
 end
 
-new_car = Car.new
-new_car.display_car
-new_car.forward(35)
-new_car.display_car
-new_car.forward(10)
-new_car.display_car
-new_car.reverse(450)
-new_car.display_car
-
-
-# # SUNROOF
-# puts "      ___     _"
-# puts "    //   |||   \\\     "
-# puts " __//____|||____\\\____  "
-# puts "| _|      |       _  ||"
-# puts "|/ \\______|______/ \\_||"
-# puts " \\_/             \\_/"
-
-
-# # LIGHTS
-# puts "      _________"
-# puts "    //   |||   \\\     "
-# puts " __//____|||____\\\____  "
-# puts "| _|      |       _  ||==============================="
-# puts "|/ \\______|______/ \\_||"
-# puts " \\_/             \\_/"
-
-# # BRIGHTS
-# puts "      _________"
-# puts "    //   |||   \\\     "
-# puts " __//____|||____\\\____  -------------------------------"
-# puts "| _|      |       _  ||==============================="
-# puts "|/ \\______|______/ \\_||-------------------------------"
-# puts " \\_/             \\_/"
 
 
 
-# # CAR
-# puts "      _________"
-# puts "    //   |||   \\\     "
-# puts " __//____|||____\\\____  "
-# puts "| _|      |       _  ||"
-# puts "|/ \\______|______/ \\_||"
-# puts " \\_/             \\_/"
+
+
+#  - - Old Driver Code - -  #
+# new_car = Car.new
+# new_car.display_car
+# new_car.forward(16)
+# new_car.display_car
+# new_car.forward(10)
+# new_car.display_car
+# new_car.reverse(12)
+# new_car.display_car
+# new_car.toggle_lights
+# new_car.display_car
+# new_car.toggle_lights
+# new_car.display_car
+# new_car.toggle_lights
+# new_car.display_car
+# new_car.toggle_lights
+# new_car.display_car
+# new_car.toggle_roof
+# new_car.display_car
+# new_car.toggle_roof
+# new_car.display_car
