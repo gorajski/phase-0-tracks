@@ -58,7 +58,7 @@ class Car
 		if @location + delta >= 40
 			delta = 40 - @location
 			@location = 40
-			puts "This is as far as the car can go."
+			puts "This is as far as the car can go:"
 		else
 			@location += delta
 		end
@@ -74,8 +74,9 @@ class Car
 
 	def reverse(delta)
 		if @location - delta < 0 
+			delta = @location
 			@location = 0
-			puts "This is as far as the car can go."
+			puts "This is as far as the car can go:"
 		else
 			@location = @location - delta
 		end
@@ -96,6 +97,26 @@ class Car
 		puts @line6
 	end
 
+	def toggle_lights
+# if lights off 
+#   make lights on
+#   swap appropriate display string
+	# if @light_status == 0
+	# 	@light_status += 1
+	# 	@line4 = (" " * @location) + "| _|      |       _  ||==============================="
+	end
+
+# if light on then make brights on
+#   make brights on
+#   swap appropriate display strings
+# if brights on then make lights off
+#   make lights off
+#   swap appropriate display strings
+	# end
+
+	def toggle_roof
+	end
+
 end
 
 new_car = Car.new
@@ -104,7 +125,7 @@ new_car.forward(35)
 new_car.display_car
 new_car.forward(10)
 new_car.display_car
-new_car.reverse(6)
+new_car.reverse(450)
 new_car.display_car
 
 
