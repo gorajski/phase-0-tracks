@@ -48,7 +48,7 @@ class Car
 	end
 
 	def display_car		
-		puts "The car in parking space #{@location[0]} has:"
+		puts "The car in parking space #{@location} has:"
 		puts "A #{fuel} full tank of gas."
 		if key_status
 			puts "Has keys in the car."
