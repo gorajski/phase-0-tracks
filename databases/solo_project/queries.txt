@@ -1,0 +1,59 @@
+RELEASE 2
+
+sqlite> select * from house;
+1|Gryffindor|scarlett and gold|true
+2|Hufflepuff|yellow and black|false
+3|Ravenclaw|blue and bronze|false
+4|Slytherin|grenn and silver|false
+sqlite> update house set current_house_cup_champ="false" where name="Gryffindor"
+;
+sqlite> select * from house;
+1|Gryffindor|scarlett and gold|false
+2|Hufflepuff|yellow and black|false
+3|Ravenclaw|blue and bronze|false
+4|Slytherin|grenn and silver|false
+sqlite> select wiz_students.name, house.name FROM wiz_students JOIN house ON wiz
+_students.house_id = house.id;
+Harry Potter|Gryffindor
+Hermione Granger|Gryffindor
+Draco Malfoy|Slytherin
+sqlite> select * FROM wiz_students JOIN house ON wiz_students.house_id = house.i
+d;
+1|Harry Potter|2|false|1|1|Gryffindor|scarlett and gold|false
+2|Hermione Granger|2|true|1|1|Gryffindor|scarlett and gold|false
+3|Draco Malfoy|2|false|4|4|Slytherin|grenn and silver|false
+sqlite> delete from wiz_students where muggle_born="true"
+   ...> ;
+sqlite> select * from wiz_students
+   ...> ;
+1|Harry Potter|2|false|1
+3|Draco Malfoy|2|false|4
+
+
+RELEASE 3
+
+sqlite> select * from wiz_students CROSS JOIN house
+   ...> ;
+1|Harry Potter|2|false|1|1|Gryffindor|scarlett and gold|false
+1|Harry Potter|2|false|1|2|Hufflepuff|yellow and black|false
+1|Harry Potter|2|false|1|3|Ravenclaw|blue and bronze|false
+1|Harry Potter|2|false|1|4|Slytherin|grenn and silver|false
+3|Draco Malfoy|2|false|4|1|Gryffindor|scarlett and gold|false
+3|Draco Malfoy|2|false|4|2|Hufflepuff|yellow and black|false
+3|Draco Malfoy|2|false|4|3|Ravenclaw|blue and bronze|false
+3|Draco Malfoy|2|false|4|4|Slytherin|grenn and silver|false
+4|Hermione Granger|2|true|1|1|Gryffindor|scarlett and gold|false
+4|Hermione Granger|2|true|1|2|Hufflepuff|yellow and black|false
+4|Hermione Granger|2|true|1|3|Ravenclaw|blue and bronze|false
+4|Hermione Granger|2|true|1|4|Slytherin|grenn and silver|false
+sqlite> select * from wiz_students NATURAL JOIN house;
+sqlite> select * from wiz_students JOIN house on wiz_students.house_id = house.i
+d;
+1|Harry Potter|2|false|1|1|Gryffindor|scarlett and gold|false
+3|Draco Malfoy|2|false|4|4|Slytherin|grenn and silver|false
+4|Hermione Granger|2|true|1|1|Gryffindor|scarlett and gold|false
+sqlite> select wiz_students.muggle_born, house.name from wiz_students LEFT OUTER
+ JOIN house ON wiz_students.house_id = house.id;
+false|Gryffindor
+false|Slytherin
+true|Gryffindor
