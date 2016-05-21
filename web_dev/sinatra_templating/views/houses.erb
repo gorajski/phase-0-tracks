@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>House Points</title>
+</head>
+<body>
+<h1>Houses and Points</h1>
+<ul>
+    <% @houses.each do |house| %>
+      <li><%= house['name'] %>, <%= house['points'] %></li>
+    <% end %>
+</ul>
+<h2>Add points here</h2>
+<form action="/houses" method="POST">
+  <input type="text" name="name" placeholder="House Name">
+  <input type="text" name="points" placeholder="Add Points">
+  <button type="submit">Save</button>
+</form>
+<br><br>
+<form action="/" method="GET">
+  <button type="submit">Home</button>
+</form>
+
+</body>
+</html>
