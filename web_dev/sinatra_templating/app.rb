@@ -37,6 +37,7 @@ end
 # add points to a house
 
 post '/houses' do
+	houses = db2.execute("SELECT * FROM houses")
 	points_current = db2.execute("SELECT points FROM houses WHERE name=?", params['name'])[0][0]  #Create hash of just the point value of desired house and then select the value out of the only row in the hash
 	points_delta = params['points'].to_i		#Take the entered value as the desired number of points to be added to the team total.
 	points_new = points_current + points_delta		#Create new total point value for desired team
